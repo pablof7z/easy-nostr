@@ -1,0 +1,21 @@
+{
+  "name": "easy-nostr",
+  "version": "0.1.0",
+  "description": "Nostr client building made easy.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fiatjaf/easy-nostr.git"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.46.1",
+    "@typescript-eslint/parser": "^5.46.1",
+    "esbuild": "^0.16.9",
+    "eslint": "^8.30.0",
+    "eslint-plugin-babel": "^5.3.1",
+    "typescript": "^4.9.4"
+  },
+  "dependencies": {
+    "lru-cache": "^7.14.1",
+    "nostr-tools": "../nostr-tools"
+  }
+}

@@ -24,7 +24,7 @@ const n = nostr.client({
   publicKey: '...',
 
   // we need to specify the main relays used by the client user
-  relays: ['wss://nostr.alice.com', 'wss://relay.bananas.com']
+  write: ['wss://nostr.alice.com', 'wss://relay.bananas.com']
 
   // this specifies how much we will block while waiting for a relay to return an event
   // patience: 2 // (in seconds)
@@ -43,9 +43,9 @@ metadataEvent.set({name: 'Alice', picture: 'https://alice.com/img/pic.jpg'})
 // and then publish it
 
 // when someone is added to a follow list, they can have zero or more relays specified
-// for them
-// when passing an `nprofile` (NIP-19) that will have relay information extracted from
-// it automatically.
+// for them.
+// when passing an `nprofile` (NIP-19) or a NIP-05 identifier these will have relay
+// information extracted from them automatically.
 n.follows.add('BOB', 'wss://nostr.bob.com')
 n.follows.add('CAROL', 'wss://relay.nostr.com')
 n.follows.add('DAVE', 'wss://relay.nostr.com', 'wss://relay.dave.com')
@@ -65,9 +65,8 @@ console.log(n.relays.get())
 // }
 
 // after adding this information we can query the client's "home feed"
-let sub = n.subscribe.homeFeed()
-sub.on('event', (event) => {
-  console.log(event)
+n.homeFeed.addListener((allEvents) => {
+  console.log(allEvents)
 })
 
 // every time we get an event, internal magic will happen that keeps track of in which
