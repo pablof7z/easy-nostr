@@ -16,6 +16,6 @@
   },
   "dependencies": {
     "lru-cache": "^7.14.1",
-    "nostr-tools": "../nostr-tools"
+    "nostr-tools": "^1.3.2"
   }
 }
